@@ -2,7 +2,6 @@ from fastapi import APIRouter, Request, HTTPException, Depends
 from sqlalchemy.orm import Session
 import json
 from app.services.rate_limiter import is_allowed
-from app.services.cache_service import get_user_cache, set_user_cache
 from app.db.database import get_db
 from app.db import models
 from fastapi.responses import JSONResponse
