@@ -7,3 +7,5 @@ REDIS_HOST= os.getenv("REDIS_HOST")
 REDIS_PORT = int(os.getenv("REDIS_PORT"))
 
 DATABASE_URL = os.getenv("DATABASE_URL")
+EMAIL = "abidshaikh0401@gmail.com"
+APP_PASSWORD = "yxdb vcnb dcmh ypjt"
