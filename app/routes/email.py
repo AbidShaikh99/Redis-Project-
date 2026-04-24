@@ -1,18 +1,21 @@
 from fastapi import APIRouter
 from worker.tasks import send_email_task
+from app.schemas.email import EmailRequest
 
 router = APIRouter()
 
+
+
 @router.post("/send/email")
-def send_email_api(email: str):
+def send_email_api(request: EmailRequest):
 
-    subject = "Welcome"
-    body = "Hello! This is a real email sent using Celery."
-
-    task = send_email_task.delay(email, subject, body)
+    send_email_task.delay(
+        request.email,
+        request.subject,
+        request.body
+    )
 
     return {
         "status": True,
-        "message": "Email is being sent",
-        "task_id": task.id
+        "message": "Email is being sent"
     }
