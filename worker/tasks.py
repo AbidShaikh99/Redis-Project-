@@ -1,4 +1,3 @@
-import os
 import smtplib
 from email.mime.text import MIMEText
 from app.utils.config import EMAIL, APP_PASSWORD
@@ -19,7 +18,6 @@ def send_email(to_email: str, subject: str, body: str):
 
 @celery.task
 def send_email_task(to_email: str, subject: str, body: str):
-    print("TASK EXECUTED") 
     try:
         return send_email(to_email, subject, body)
     except Exception as e:

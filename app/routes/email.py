@@ -8,12 +8,13 @@ router = APIRouter()
 
 @router.post("/send/email")
 def send_email_api(request: EmailRequest):
-
-    send_email_task.delay(
-        request.email,
-        request.subject,
-        request.body
-    )
+    
+    for email in request.email:
+        send_email_task.delay(
+            email,
+            request.subject,
+            request.body
+        )
 
     return {
         "status": True,
